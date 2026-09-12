@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Quiz de Perfil de Lector - Descubre Tu Naturaleza Literaria</title>
+  <!-- Tailwind CSS CDN with forms and container queries -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display & Source Serif 4 & Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24..48,400..700,0..1,-50..200"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              deep: '#142e23',
+              forest: '#1a3c2e',
+              darkcard: '#162820',
+              sage: '#3d6c54',
+              softsage: '#8fa89b',
+              leaf: '#4d8a6b',
+              amber: '#c98332',
+              warmbronze: '#a86c35',
+              terracotta: '#875138',
+              cream: '#fdfbf7',
+              lightstone: '#f4f6f3'
+            }
+          },
+          fontFamily: {
+            sans: ['"Source Sans 3"', '"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Source Serif 4"', '"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            'card-3d': '0 25px 60px -12px rgba(24, 54, 43, 0.16), 0 8px 24px -4px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.95), inset 0 2px 3px rgba(255, 255, 255, 1), inset 0 -3px 6px rgba(45, 75, 60, 0.05)',
+            'btn-3d': '0 5px 15px -3px rgba(20, 50, 36, 0.08), 0 2px 4px rgba(0, 0, 0, 0.03), inset 0 1.5px 1px rgba(255, 255, 255, 1), inset 0 -2px 0 rgba(20, 50, 36, 0.05)',
+            'btn-3d-hover': '0 14px 28px -6px rgba(168, 108, 53, 0.28), 0 6px 14px -3px rgba(20, 56, 44, 0.12), inset 0 2px 2px #ffffff',
+            'badge-3d': 'inset 0 1.5px 1.5px rgba(255,255,255,0.45), inset 0 -2px 4px rgba(0,0,0,0.2), 0 6px 14px rgba(20, 50, 36, 0.2)',
+            'medallion': '0 12px 26px -4px rgba(20, 50, 36, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.7), inset 0 -3px 6px rgba(0, 0, 0, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+  <style data-purpose="custom-theme-styles">
+    /* Light, organic botanical ambiance: pale sage, vegetable linen, soft moss */
+    body {
+      background-color: #e8eee9;
+      background-image:
+        radial-gradient(circle at 12% 15%, rgba(175, 203, 185, 0.55) 0%, transparent 48%),
+        radial-gradient(circle at 88% 18%, rgba(220, 204, 178, 0.45) 0%, transparent 45%),
+        radial-gradient(circle at 50% 55%, #e1e9e2 0%, #cad8cd 100%);
+      min-height: 100vh;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    /* Tactile herbarium slab container in crisp bright relief */
+    .botanical-slab {
+      background: linear-gradient(170deg, #ffffff 0%, #fafcfa 55%, #f2f6f3 100%);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow:
+        0 28px 65px -12px rgba(20, 48, 35, 0.15),
+        0 10px 25px -5px rgba(25, 45, 35, 0.07),
+        0 0 0 1px rgba(255, 255, 255, 0.9),
+        inset 0 2px 2px #ffffff,
+        inset 0 -2px 6px rgba(50, 85, 65, 0.05);
+    }
+
+    /* 3D Option card styling */
+    .option-btn-3d {
+      transition: all 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: linear-gradient(180deg, #ffffff 0%, #f7faf8 100%);
+      border: 1px solid rgba(200, 214, 204, 0.7);
+      box-shadow:
+        0 4px 12px -2px rgba(20, 45, 32, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.03),
+        inset 0 2px 1px rgba(255, 255, 255, 1),
+        inset 0 -2px 1px rgba(20, 50, 35, 0.04);
+    }
+
+    .option-btn-3d:hover {
+      transform: translateY(-3px) scale(1.006);
+      border-color: #a86c35;
+      background: linear-gradient(180deg, #ffffff 0%, #fefcf9 100%);
+      box-shadow:
+        0 16px 28px -6px rgba(168, 108, 53, 0.22),
+        0 6px 12px -3px rgba(20, 56, 44, 0.08),
+        inset 0 2px 1px #ffffff;
+    }
+
+    .option-btn-3d:active {
+      transform: translateY(-0.5px) scale(0.996);
+      box-shadow: 0 4px 8px -2px rgba(168, 108, 53, 0.16);
+    }
+
+    /* 3D Circular badge for letter */
+    .letter-disc {
+      background: linear-gradient(145deg, #ffffff 0%, #e6eee7 100%);
+      box-shadow:
+        0 3px 6px -1px rgba(20, 45, 32, 0.12),
+        inset 0 1.5px 1px rgba(255, 255, 255, 1),
+        inset 0 -1.5px 2px rgba(20, 45, 32, 0.08);
+    }
+
+    .option-btn-3d:hover .letter-disc {
+      background: linear-gradient(145deg, #a86c35 0%, #8e5422 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(168, 108, 53, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    /* 3D Progress pill bar */
+    .progress-capsule {
+      background: linear-gradient(180deg, #dce6de 0%, #cbd8ce 100%);
+      box-shadow: inset 0 2px 4px rgba(20, 45, 32, 0.12), 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .progress-liquid {
+      background: linear-gradient(90deg, #2d5a44 0%, #467e61 50%, #c98332 100%);
+      box-shadow: 0 2px 8px rgba(45, 90, 68, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+
+<body
+  class="text-stone-800 antialiased selection:bg-brand-warmbronze selection:text-white flex flex-col justify-between py-6 px-4 md:px-8 relative min-h-screen">
+  <!-- Atmospheric Botanical & Clay Relieve Layer (Clarified soft sage/moss/linen) -->
+  <div class="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-[#e3ece4] via-[#d6e4d8] to-[#c8d9cc]"></div>
+  <div
+    class="fixed -top-32 -right-32 w-[38rem] h-[38rem] rounded-full bg-[#cadbc9]/50 blur-[100px] pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed top-1/3 -left-48 w-[42rem] h-[42rem] rounded-full bg-[#e3d7c5]/45 blur-[110px] pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed -bottom-48 right-1/4 w-[40rem] h-[40rem] rounded-full bg-[#bfd5c6]/45 blur-[100px] pointer-events-none z-0">
+  </div>
+  <!-- SILUETAS Y SOMBRAS DE CONEJOS DIFUMINADAS DE FONDO https://lh3.googleusercontent.com/aida-public/AB6AXuDq1IGEOxHWBd2sNfXj8eUtegKtc__UATsz17JwHejCULMvlndSPQ_o2jMPvI86bewzgXR-ZBxKAtHxuPSN8tNsejiiGIwD2TfZqF55yxnDe_3Ox2WnxiGhhre3oPwIoQcNgrdo3fLWk7voOOezixZuHTtu-EwzLBhAbJhpE85XfvWVetOUYmHro-t-v5TKNMSthSC9uJ4WHuI9kdEXOlExcpApOvGoyWfQh9UcwYhHOwe3naXcq5Po7i7hNbPPn4GH -->
+  <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+    <div class="absolute inset-0 bg-repeat bg-center opacity-[0.09] mix-blend-multiply"
+      style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBIVfQPzmJ6kI1jRqjNSXTkiGGFi8mmGryplhSf9sOggdAKLjD5dzcvkep9E1gtM-exLPpXIwq7ZX7iXLGR4LfB8p9nQevtMpr20pi2541WS7u4-NNmem3Vq4ZiEXZRbVwvrq_BcCwU_jwN9QDtY1hn7XasOy4SqCQIytKBC-kdq8ZavipSXovFgam-Q86BVzj_AU2riDPxPTpl_Ru1dDRjnvjk_TotSd7ZniDs6XXcDOYIP84eQjP3l1PVwrtfWk0P&quot;); background-size: 520px;">
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-[#edf2ee]/40 via-transparent to-[#edf2ee]/50 pointer-events-none">
+    </div>
+  </div>
+  <!-- END: Ambient Blurred Bunny Silhouettes -->
+  <!-- BEGIN: Header -->
+  <header class="relative z-10 max-w-3xl mx-auto w-full text-center mb-6 pt-2">
+    <div class="flex items-center justify-between mb-4">
+      <a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/80 hover:bg-white text-stone-700 hover:text-brand-deep border border-stone-200/90 text-xs font-semibold shadow-xs transition-all transform hover:-translate-y-0.5"
+        href="../inicio_la_madriguera_del_conejo_lector_im_genes_dedicadas_por_color/inicio.html" title="Volver al Inicio">
+        <span class="material-symbols-outlined text-sm text-brand-warmbronze">arrow_back</span>
+        <span class="">Volver al Inicio</span>
+      </a>
+      <span class="text-[11px] font-medium text-stone-500 uppercase tracking-widest hidden sm:inline-block">Test de
+        Lectura</span>
+    </div>
+    <!-- 3D Sculpted Medallion with official mascot logo -->
+    <div class="relative inline-block mb-3">
+      <div
+        class="w-20 h-20 sm:w-22 sm:h-22 rounded-full p-[3px] bg-gradient-to-b from-[#e8d5b5] via-[#a8743e] to-[#4a2e16] shadow-medallion mx-auto flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
+        <div
+          class="w-full h-full rounded-full bg-[#fbf9f5] flex items-center justify-center overflow-hidden p-1 shadow-inner border border-amber-200/50">
+          <img alt="La madriguera del conejo lector"
+            class="w-full h-full filter drop-shadow-sm rounded-full object-cover"
+            src="https://lh3.googleusercontent.com/aida/AEtjO1XkP_4oCrSIWkWsvwqEIhtuuB1O3Z2eNnqHKRGVbLg9Y8R7WjbrqGCgQmYk3kL1dfdnFrlY_NGRTD0bosnw_4ebZbWQdQTPrHxJtV7IXy-N7A2BKtX6dYG6ivRrnM8_lmUR-dNJSJ4yimQfOGhrzrthsrngKf679SPn3akpwzhrM1n0Xo0OmBmbQ9wj-4SyFP-JGyMVQENGYCPDISKPLuuEi7tYzyZhjRsKVh2kDHZMnMvVqXJQ7ODauQ">
+        </div>
+      </div>
+      <!-- Soft golden 3D shine ring -->
+      <div class="absolute -inset-1 rounded-full border border-amber-500/30 pointer-events-none blur-[1px]"></div>
+    </div>
+    <div
+      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-brand-forest/20 text-brand-forest text-xs tracking-widest font-semibold uppercase mb-3 shadow-[0_4px_12px_rgba(20,50,35,0.06)] backdrop-blur-md">
+      <span class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b] animate-pulse"></span>
+      LA MADRIGUERA DEL CONEJO LECTOR · QUIZ LITERARIO
+    </div>
+    <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-brand-deep tracking-tight font-bold drop-shadow-sm">
+      Perfil de Lector
+    </h1>
+    <p class="text-stone-600 text-sm md:text-base mt-2 max-w-xl mx-auto font-normal leading-relaxed">
+      Sintoniza con tu instinto narrativo y encuentra las historias que resuenan con tu esencia.
+    </p>
+  </header>
+  <!-- END: Header -->
+  <!-- BEGIN: MainContent -->
+  <main class="relative z-10 max-w-3xl mx-auto w-full flex-grow flex flex-col justify-center">
+    <!-- Card Container: 3D Botanical Slab with ultra-rounded corners and pronounced tactile depth -->
+    <div
+      class="botanical-slab rounded-[32px] sm:rounded-[36px] p-6 sm:p-10 transition-all duration-300 relative overflow-hidden">
+      <!-- Subtle 3D Top Bevel Highlight -->
+      <div
+        class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none">
+      </div>
+      <!-- BEGIN: Active Quiz Section (Visible on initial load) -->
+      <section class="space-y-6" data-purpose="quiz-container" id="quiz-ui">
+        <!-- Progress Bar & Indicator -->
+        <div class="space-y-2.5">
+          <div class="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-stone-500">
+            <span class="flex items-center gap-1.5" id="question-counter">
+              <span class="w-2 h-2 rounded-full bg-brand-sage inline-block animate-pulse"></span>
+              Pregunta 1 de 20
+            </span>
+            <span class="text-brand-warmbronze font-extrabold text-sm" id="progress-percent">5%</span>
+          </div>
+          <!-- 3D Capsule Bar -->
+          <div class="w-full progress-capsule h-3.5 rounded-full overflow-hidden p-0.5 relative">
+            <div class="h-full progress-liquid rounded-full transition-all duration-300 ease-out relative"
+              id="progress-bar" style="width: 5%;">
+              <div class="absolute inset-x-0 top-0 h-1 bg-white/50 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Quote or Micro-Excerpt Box (conditionally displayed) -->
+        <div
+          class="relative overflow-hidden bg-gradient-to-br from-[#f8f5ed] to-[#ede7d8] border-l-4 border-brand-warmbronze rounded-r-2xl p-5 shadow-[inset_0_1px_2px_rgba(255,255,255,0.9),0_4px_10px_rgba(20,40,30,0.04)] text-stone-700 italic font-serif text-base sm:text-lg leading-relaxed hidden"
+          id="text-container">
+          <svg class="w-9 h-9 text-brand-warmbronze/25 absolute -top-1 -right-1" fill="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z">
+            </path>
+          </svg>
+          <span class="relative z-10" id="quote-content"></span>
+        </div>
+        <!-- Question Title -->
+        <div class="pt-1">
+          <h2 class="text-xl sm:text-2xl font-bold text-brand-deep tracking-tight leading-snug font-serif"
+            id="question-text">1. Abres un libro nuevo, ¿qué es lo primero que capta tu atención?</h2>
+        </div>
+        <!-- Options Container (3D sculpted interactive buttons) -->
+        <div class="grid grid-cols-1 gap-3.5 pt-1" data-purpose="options-grid" id="options-container"><button
+            type="button"
+            class="option-btn-3d w-full text-left p-4 sm:p-5 rounded-2xl flex items-center justify-between group cursor-pointer relative">
+            <div class="flex items-center gap-3.5 pr-2">
+              <span
+                class="letter-disc flex-shrink-0 w-9 h-9 rounded-xl text-stone-700 font-bold text-sm flex items-center justify-center border border-stone-200/80 transition-all duration-200">
+                A
+              </span>
+              <span
+                class="text-stone-800 font-medium text-sm sm:text-base group-hover:text-stone-950 transition-colors">
+                El mapa, glosario o universo detallado.
+              </span>
+            </div>
+            <div
+              class="opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all text-brand-warmbronze flex-shrink-0">
+              <div
+                class="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center border border-amber-200/80 shadow-xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </button><button type="button"
+            class="option-btn-3d w-full text-left p-4 sm:p-5 rounded-2xl flex items-center justify-between group cursor-pointer relative">
+            <div class="flex items-center gap-3.5 pr-2">
+              <span
+                class="letter-disc flex-shrink-0 w-9 h-9 rounded-xl text-stone-700 font-bold text-sm flex items-center justify-center border border-stone-200/80 transition-all duration-200">
+                B
+              </span>
+              <span
+                class="text-stone-800 font-medium text-sm sm:text-base group-hover:text-stone-950 transition-colors">
+                La promesa de un enigma o dilema moral.
+              </span>
+            </div>
+            <div
+              class="opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all text-brand-warmbronze flex-shrink-0">
+              <div
+                class="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center border border-amber-200/80 shadow-xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </button><button type="button"
+            class="option-btn-3d w-full text-left p-4 sm:p-5 rounded-2xl flex items-center justify-between group cursor-pointer relative">
+            <div class="flex items-center gap-3.5 pr-2">
+              <span
+                class="letter-disc flex-shrink-0 w-9 h-9 rounded-xl text-stone-700 font-bold text-sm flex items-center justify-center border border-stone-200/80 transition-all duration-200">
+                C
+              </span>
+              <span
+                class="text-stone-800 font-medium text-sm sm:text-base group-hover:text-stone-950 transition-colors">
+                La intensidad emocional de los personajes.
+              </span>
+            </div>
+            <div
+              class="opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all text-brand-warmbronze flex-shrink-0">
+              <div
+                class="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center border border-amber-200/80 shadow-xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </button><button type="button"
+            class="option-btn-3d w-full text-left p-4 sm:p-5 rounded-2xl flex items-center justify-between group cursor-pointer relative">
+            <div class="flex items-center gap-3.5 pr-2">
+              <span
+                class="letter-disc flex-shrink-0 w-9 h-9 rounded-xl text-stone-700 font-bold text-sm flex items-center justify-center border border-stone-200/80 transition-all duration-200">
+                D
+              </span>
+              <span
+                class="text-stone-800 font-medium text-sm sm:text-base group-hover:text-stone-950 transition-colors">
+                El ritmo ágil del primer párrafo.
+              </span>
+            </div>
+            <div
+              class="opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all text-brand-warmbronze flex-shrink-0">
+              <div
+                class="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center border border-amber-200/80 shadow-xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </button></div>
+      </section>
+      <!-- END: Active Quiz Section -->
+      <!-- BEGIN: Results Section (Initially hidden, revealed upon completing the 20 questions) -->
+      <section class="space-y-8 animate-fade-in text-stone-800 hidden" data-purpose="result-container" id="result-ui">
+        <!-- Header Ribbon -->
+        <div class="text-center space-y-2">
+          <div
+            class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-brand-forest text-white mb-1 shadow-lg shadow-emerald-900/20 border border-emerald-300/40">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+            </svg>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-deep">Tu Perfil Lector</h2>
+          <p class="text-stone-600 text-sm">Basado en tus preferencias sensoriales, temáticas y de narrativa</p>
+        </div>
+        <!-- Profile Badges Section with 3D tactile cards and dedicated 3D Archetype Images -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Primary Profile -->
+          <div
+            class="relative overflow-hidden rounded-2xl p-5 sm:p-6 border-2 border-brand-warmbronze bg-gradient-to-b from-white to-[#f9fbf9] shadow-[0_12px_28px_-4px_rgba(20,45,30,0.12),inset_0_1px_1px_white] flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-warmbronze">Perfil Principal
+                  Dominante</span>
+                <span class="px-2 py-0.5 rounded-full bg-brand-warmbronze/15 text-brand-warmbronze font-bold text-xs"
+                  id="primary-score-pill">0 pts</span>
+              </div>
+              <div class="flex items-center gap-4 mb-3">
+                <!-- 3D Icon Medallion Image for Primary Archetype -->
+                <div
+                  class="w-20 h-20 rounded-2xl flex-shrink-0 overflow-hidden shadow-[0_8px_18px_rgba(0,0,0,0.18),inset_0_2px_3px_rgba(255,255,255,0.45)] border border-stone-200/80 bg-stone-100 p-1">
+                  <img alt="Perfil Principal" class="w-full h-full object-cover rounded-xl" id="primary-img"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq6_cGwBBNzA1WAhzqn_Dkt5OBf-cXXCTBQJNqzWtNCSX3eKedd3oz3BW2GowWAY8wQWDUIn9WPboPAjgCvT-I8k8Olfr6n3c3-e7y-nBymAM9mmhHdMrAEOCXfIcuhh7oBOGAHwuIEooceZg3Vo_Y_FnBDMN4DsvTTqnP-RR3jpLRE5sEDVZMmqZboFLyxUzj7QNxA5E4f2RShLhHYtwRLAOUfW9AtNGsLN-KdSWZGM5J5_rks81YatgcC-65Rkze">
+                </div>
+                <div>
+                  <h3 class="font-serif text-xl sm:text-2xl font-bold text-stone-900 leading-tight" id="primary-name">
+                    Azul — El Analítico</h3>
+                  <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-white text-xs font-bold shadow-sm mt-1.5"
+                    id="primary-badge" style="background-color: rgb(30, 83, 126);">Mayor afinidad instintiva</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-stone-500 mt-2">Determina el motor central de tu conexión intelectual y emocional con
+              cada lectura.</p>
+          </div>
+          <!-- Secondary Tendency -->
+          <div
+            class="relative overflow-hidden rounded-2xl p-5 sm:p-6 border border-stone-300 bg-gradient-to-b from-white to-[#f9fbf9] shadow-[0_8px_20px_-4px_rgba(20,45,30,0.08),inset_0_1px_1px_white] flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-stone-500">Tendencia Complementaria</span>
+                <span class="px-2 py-0.5 rounded-full bg-stone-100 text-stone-600 font-bold text-xs"
+                  id="secondary-score-pill">0 pts</span>
+              </div>
+              <div class="flex items-center gap-4 mb-3">
+                <!-- 3D Icon Medallion Image for Secondary Archetype -->
+                <div
+                  class="w-16 h-16 rounded-2xl flex-shrink-0 overflow-hidden shadow-[0_6px_14px_rgba(0,0,0,0.15),inset_0_1.5px_2px_rgba(255,255,255,0.4)] border border-stone-200/80 bg-stone-100 p-1 opacity-95">
+                  <img alt="Tendencia Secundaria" class="w-full h-full object-cover rounded-xl" id="secondary-img"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB672bS4mdDzndEnebKa8a54DTcJMmGa8FtgOLOJCJhIsKZIwmmAmvEG7i5b6GGAb8SnawXwBnUEe9-CMD2hGz7TeYooHLoKbSPuIuowqGIxWWYAHAfdvHBc0TE3PxZctY7V4sqcSyvGnRBcVdUQ9uUihgwUJ_lgb4fiE67w-N7TpE28pDp1RU7j640hYgmt3n4ix3LcUKtJ8KqNcstCbMybHPiXpN1UBNoA9D0_yWTAgihrI3FX0KMrKgDtIEtw9vN">
+                </div>
+                <div>
+                  <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-800 leading-tight" id="secondary-name">
+                    Rojo — El Apasionado</h3>
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-white text-xs font-semibold shadow-xs mt-1.5"
+                    id="secondary-badge" style="background-color: rgb(168, 46, 46);">Segunda fuerza rectora</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-stone-500 mt-2">Matiza tu criterio y añade dimensiones extra al disfrute de tus
+              tramas favoritas.</p>
+          </div>
+        </div>
+        <!-- Detailed Description of Primary Winner -->
+        <div
+          class="bg-gradient-to-br from-[#fcfbf9] to-[#f4ede3] rounded-2xl p-6 sm:p-7 border border-stone-200/80 shadow-[inset_0_1px_2px_rgba(255,255,255,1),0_4px_12px_rgba(20,40,30,0.03)]">
+          <h3 class="text-base font-bold text-brand-deep uppercase tracking-wider mb-2 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-warmbronze"></span>
+            Análisis de tu Personalidad Lectora
+          </h3>
+          <p class="text-stone-700 leading-relaxed text-sm sm:text-base font-normal" id="profile-desc"></p>
+        </div>
+        <!-- Visual Grid of the 6 Reader Archetypes with official 3D clay medallions -->
+        <div
+          class="rounded-2xl p-6 bg-white/90 border border-stone-200/90 shadow-[0_4px_16px_rgba(20,45,30,0.04),inset_0_1px_1px_white]">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <h3 class="text-xs font-bold text-brand-deep uppercase tracking-wider flex items-center gap-2">
+              <span class="material-symbols-outlined text-brand-warmbronze text-lg">auto_awesome</span>
+              Los 6 Arquetipos de la Madriguera
+            </h3>
+            <span class="text-[11px] text-stone-500 font-medium">Resultados y puntuaciones exactas obtenidas</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3" id="archetypes-grid">
+            <!-- Filled dynamically by JavaScript with official 3D medallions and exact scores -->
+          </div>
+        </div>
+        <!-- Lecturas Recomendadas de la Madriguera (4 Libros del Catálogo Oficial distribuidos: 2 Perfil Principal + 2 Perfil Secundario) -->
+        <div class="rounded-2xl p-6 bg-white border border-stone-200/90 shadow-sm">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-stone-100">
+            <div>
+              <h3 class="text-base font-bold text-brand-deep uppercase tracking-wider flex items-center gap-2">
+                <span class="material-symbols-outlined text-brand-sage text-xl">auto_stories</span>
+                Lecturas Recomendadas de la Madriguera
+              </h3>
+              <p class="text-xs text-stone-500 mt-0.5">4 títulos seleccionados de nuestro catálogo: 2 para tu perfil
+                principal y 2 para tu tendencia secundaria</p>
+            </div>
+            <span
+              class="inline-flex items-center gap-1 self-start sm:self-auto text-[11px] font-semibold text-brand-forest bg-stone-100 px-2.5 py-1 rounded-full border border-stone-200/80">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Disponibles en Catálogo
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-purpose="book-recommendations" id="books-grid">
+            <!-- Populated dynamically by JavaScript based on winning archetype and secondary tendency -->
+          </div>
+        </div>
+        <!-- Action Buttons: Explorar Catálogo y Reintentar Quiz -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-300 shadow-sm font-semibold text-sm tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            href="https://www.canva.com/design/DAHTb_lHTbY/KZFg7VvYy6EEdGDGMIr4vw/view?utm_content=DAHTb_lHTbY&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=viewer"
+            id="btn-explore-catalog" rel="noopener noreferrer" target="_blank">
+            <span class="material-symbols-outlined text-lg text-brand-warmbronze">local_library</span>
+            Explorar en el Catálogo
+          </a>
+          <button
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-brand-forest via-[#214b39] to-brand-forest text-brand-cream border border-emerald-400/40 shadow-[0_10px_22px_-3px_rgba(20,55,38,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)] hover:shadow-[0_14px_28px_-2px_rgba(168,108,53,0.35)] font-semibold text-sm tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            id="btn-restart">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+            Realizar el test nuevamente
+          </button>
+          <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-amber-50/60 text-brand-warmbronze border border-brand-warmbronze/30 shadow-xs hover:border-brand-warmbronze font-semibold text-sm tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            href="../inicio_la_madriguera_del_conejo_lector_im_genes_dedicadas_por_color/inicio.html" id="btn-back-home">
+            <span class="material-symbols-outlined text-lg">home</span>
+            Volver al Inicio
+          </a>
+        </div>
+      </section>
+      <!-- END: Results Section -->
+    </div>
+  </main>
+  <!-- END: MainContent -->
+  <!-- BEGIN: Footer -->
+  <footer class="relative z-10 max-w-3xl mx-auto w-full text-center py-6 text-brand-forest/70 font-medium text-xs">
+    <p class="">La madriguera del conejo lector • Curaduría botánica y psicología de lectura</p>
+  </footer>
+  <!-- END: Footer -->
+  <!-- BEGIN: Quiz Logic Script -->
+  <script data-purpose="quiz-application-logic">
+    const profiles = {
+      AZ: {
+        name: "Azul — El Analítico",
+        titleShort: "El Analítico",
+        color: "#1e537e",
+        badgeBg: "bg-[#1e537e]",
+        icon: "nights_stay",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC9gtdJmb2G2SR06HzQUKAQRSYGINPhfx160ZJNhpPxY0SsRtu5krQHJ6dBc4CJsjSV7t9NGcE1LlQ1kde-D0xw32uucuDpW4qgTMe5cyUlyBc_LDjDgfVHX1yx_UnWcHQ8GNds_kh_HYBZ9T3r0sclTDyA3XWEpwAZ_hjsfxzUeMOJyxRul7Wv_0XkmsuM2cf0KGBvU6VhCSXewP1H_LhLoYgmFGb-awji81VplPsK8EpD1CRvQul5XjWKA5w0zs5s",
+        desc: "Lees con espíritu crítico y metódico. Disfrutas descifrar acertijos, analizar contextos complejos y conectar pistas. Tu tendencia complementaria aporta matices vivenciales a esta incansable búsqueda de coherencia y rigor conceptual.",
+        books: [
+          {title: "Las 48 Leyes del Poder", author: "Robert Greene", tag: "Estrategia & Psicología", icon: "psychology"},
+          {title: "100 Lecciones de Neurociencias", author: "Dr. Eduardo Calixto", tag: "Mente Analítica", icon: "biotech"},
+          {title: "Historia del Tiempo: del Big Bang a los Agujeros Negros", author: "Stephen W. Hawking", tag: "Ciencia & Cosmología", icon: "flare"},
+          {title: "El Psicoanalista", author: "John Katzenbach", tag: "Thriller Psicológico", icon: "neurology"}
+        ]
+      },
+      VE: {
+        name: "Verde — El Explorador",
+        titleShort: "El Explorador",
+        color: "#286840",
+        badgeBg: "bg-[#286840]",
+        icon: "yard",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3f9b1FUd9mDXwhBf77cK_0mGzryebEgh4224lwUljuh3gOfQRqHbIJeJhNQog8vB2glFoCCiXuOXz51YANLR51hX3x6HY2OSEmrFGcL3T_jPdEFeg2faJbMSIxNDCm6frhu3Oh8OgW4JT1rXNNAyFD4PLRRM9iCicBKVpf0XFi9Rmn7bzWHa3Mpciw9sjC-ciY3xV1Hu_-rMOUXj_PY8zZWaiY3q0Kp5miCj5BQpxsaVXF7iG6QiWsY2jAOMYYfcg",
+        desc: "Buscas escapar de la realidad e sumergirte en universos con reglas, mapas, mitologías y geografías propias. Valoras la imaginación sin límites, la aventura orgánica y la construcción deslumbrante de nuevos mundos.",
+        books: [
+          {title: "El Nombre del Viento", author: "Patrick Rothfuss", tag: "Fantasía Épica", icon: "auto_stories"},
+          {title: "Jurassic Park", author: "Michael Crichton", tag: "Ciencia Ficción & Aventura", icon: "pest_control"},
+          {title: "Percy Jackson: El Ladrón del Rayo", author: "Rick Riordan", tag: "Mitología & Expedición", icon: "bolt"},
+          {title: "El Castillo Ambulante", author: "Diana Wynne Jones", tag: "Universos Encantados", icon: "castle"}
+        ]
+      },
+      RO: {
+        name: "Rojo — El Apasionado",
+        titleShort: "El Apasionado",
+        color: "#a82e2e",
+        badgeBg: "bg-[#a82e2e]",
+        icon: "local_fire_department",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDerAIAS_hguw-dSnGmNeRbM3wZ86oicSc_ZwSD3yL5Xeulkao7TWgq0HWZ_obrG7ziS9sw8lqX-JSy5JW2UUO1Ep25J8hzy8kmcdewmxzhkmkiiyLcV0QeN_IKJptG0VL5Phn-9PQf5PFiN8kQk1L890v3ZexipseZS9gba9M9lv3_aqTklu3f4ABNB7YjgvO-C4ov0g0MBBdmlbKvn9javYn5mi1imR4u8Us3xLKoK-pUlMWkWAFz9ij9Q22Xtpqg",
+        desc: "Te conectas profundamente con la dimensión emocional de las historias. Buscas drama genuino, la fuerza de los vínculos humanos, arcos íntimos inolvidables y pasiones que dejan huella indeleble en el alma.",
+        books: [
+          {title: "Cien Años de Soledad", author: "Gabriel García Márquez", tag: "Saga & Sentimiento", icon: "auto_awesome"},
+          {title: "El Arte de Amar", author: "Erich Fromm", tag: "Filosofía del Amor", icon: "favorite"},
+          {title: "Como Agua para Chocolate", author: "Laura Esquivel", tag: "Pasión & Tradición", icon: "restaurant"},
+          {title: "La Maestría del Amor", author: "Dr. Miguel Ruiz", tag: "Vínculos & Sabiduría", icon: "volunteer_activism"}
+        ]
+      },
+      AM: {
+        name: "Amarillo — El Curioso Ligero",
+        titleShort: "El Curioso Ligero",
+        color: "#c67d16",
+        badgeBg: "bg-[#c67d16]",
+        icon: "lightbulb",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBm0y8UKoOlm9vQ_PG3KGqZgzPAPzVPmny08dS1Hzdnq6lGXgfq2_iYU3sYV3we8-CEpMScJU7PNSgUee0QZ-un931452zAYaZd_i1Q9hwVNlOWII8-wkOp04RvLp_vtNMd0q-HVBsSmsBX3udxfJUqjKPn9R1oJESkLcl1V0lr-zOG28atCVnkM6bdVnqbvD-ZHuftmCPQnxKX6D38TMyDrCPXte4kdqbefbpjI0Uidtm2QJGNoVzmAcMPHCYnBk_Z",
+        desc: "Lees para entretenerte, despejar la mente y encontrar ideas aplicables y frescas. Prefieres historias dinámicas, con toques de ingenio, humor y ritmos amables que enriquecen tu día a día.",
+        books: [
+          {title: "Hábitos Atómicos", author: "James Clear", tag: "Agilidad & Hábitos", icon: "bolt"},
+          {title: "Te Receto un Gato", author: "Syou Ishida", tag: "Ficción Reconfortante", icon: "pets"},
+          {title: "El Principito", author: "Antoine de Saint-Exupéry", tag: "Fábula & Sensibilidad", icon: "star"},
+          {title: "El Monje que Vendió su Ferrari", author: "Robin S. Sharma", tag: "Inspiración & Equilibrio", icon: "wb_sunny"}
+        ]
+      },
+      NA: {
+        name: "Naranja — Adrenalina",
+        titleShort: "Adrenalina",
+        color: "#c34c16",
+        badgeBg: "bg-[#c34c16]",
+        icon: "explore",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgVQvTxKKoj_P29cXixv7aHKa6DOcE9yWlo2IyYHQSDVyVTDdX4yCmXD5wTV82z2EdueKy5aCPXaQCGSwuP663ZgL-vew4Vd7Y83CE8XBo0VY59OYVfedyCVa2BmEm6I4Nyp2_8pOun8BRG4AK67tU6_v8HECJr7SzPu9jNFlDaSFVs6v6L6MzIub-SDzz9fuApDcreudBzAT1eXmfVyA5-3ObA2hmSCMxGwDIUS4ABdccNHjlb6vNqIeSLPohQXEN",
+        desc: "Necesitas tensión constante, ritmo trepidante y giros de impacto. Si una lectura no te acelera el pulso con peligros inminentes, dilemas de vida o muerte y sorpresas mayúsculas, pierdes el interés al instante.",
+        books: [
+          {title: "Los Juegos del Hambre", author: "Suzanne Collins", tag: "Distopía & Tensión", icon: "crisis_alert"},
+          {title: "Apocalipsis", author: "Stephen King", tag: "Terror & Supervivencia", icon: "warning"},
+          {title: "El Visitante", author: "Stephen King", tag: "Misterio & Sobrenatural", icon: "visibility_off"},
+          {title: "La Paciente Silenciosa", author: "Alex Michaelides", tag: "Thriller Psicológico", icon: "psychology"}
+        ]
+      },
+      MO: {
+        name: "Morado — El Introspectivo",
+        titleShort: "El Introspectivo",
+        color: "#5b247c",
+        badgeBg: "bg-[#5b247c]",
+        icon: "auto_awesome",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCNlFe2MJ_-9s53iQ7BWggBSMyYAKDbJoPqo7qBETS7h8eUZsFuXyTvpihJddd3jt-14C-7_brIDYxu7NzNPsgmieEoYbmcxdxDiWD7Z4U-eV0jaLbOavPeOfaP5l-VR0L3--mvx4rAea6T0dGlWjKnlpQG0xauAc1gyHIzp2eEeAPUfw50CV6XNSneWvscCyWaw8fjHELw-9Zlp28CNxl09uQ8Boy52Mg4ehkCXYFLat22uaEFEVHffD5sTxdOPJah",
+        desc: "Aprecias la belleza del lenguaje, las reflexiones filosóficas profundas y la exploración honesta del espíritu humano por encima del ritmo frenético de los acontecimientos.",
+        books: [
+          {title: "El Poder del Ahora", author: "Eckhart Tolle", tag: "Conciencia & Presencia", icon: "self_improvement"},
+          {title: "El Hombre en Busca de Sentido", author: "Viktor Frankl", tag: "Filosofía del Alma", icon: "menu_book"},
+          {title: "Muchas Vidas, Muchos Maestros", author: "Brian Weiss", tag: "Trascendencia & Vida", icon: "all_inclusive"},
+          {title: "Diario para Estoicos", author: "Ryan Holiday", tag: "Estoicismo & Serenidad", icon: "balance"}
+        ]
+      }
+    };
+
+    const questions = [
+      {q: "Abres un libro nuevo, ¿qué es lo primero que capta tu atención?", options: [{t: "El mapa, glosario o universo detallado.", c: "VE"}, {t: "La promesa de un enigma o dilema moral.", c: "AZ"}, {t: "La intensidad emocional de los personajes.", c: "RO"}, {t: "El ritmo ágil del primer párrafo.", c: "AM"}]},
+      {q: "¿Cómo reaccionas ante un ritmo de lectura lento?", options: [{t: "Me desespera si no hay acción o peligro inmediato.", c: "NA"}, {t: "Lo disfruto con calma si la prosa es hermosa.", c: "MO"}, {t: "Lo tolero con gusto si permite analizar pistas y detalles.", c: "AZ"}, {t: "Prefiero capítulos cortos, ligeros y divertidos.", c: "AM"}]},
+      {q: "¿Qué ambiente prefieres para sumergirte a leer?", options: [{t: "Un rincón silencioso para meditar sin prisa.", c: "MO"}, {t: "La noche cerrada con atmósfera de pura tensión.", c: "NA"}, {t: "Un café relajado con luz suave y música agradable.", c: "AM"}, {t: "Cualquier lugar que logre transportarme a otro mundo.", c: "VE"}]},
+      {text: "El reloj marcaba las tres de la madrugada cuando la sombra cruzó el pasillo. Nadie debía estar en esa ala del edificio.", q: "Al leer este fragmento, tu reacción inmediata es:", options: [{t: "Deducir quién es y qué patrón racional sigue.", c: "AZ"}, {t: "Sentir aceleración cardiaca por la inminencia del peligro.", c: "NA"}, {t: "Imaginar una criatura o elemento mágico oculto.", c: "VE"}, {t: "Notar la atmósfera de soledad y nostalgia del lugar.", c: "MO"}]},
+      {text: "No te amo como si fueras rosa de sal, topacio / o flecha de claveles que propagan el fuego: / te amo como se aman ciertas cosas oscuras...", q: "Ante este verso, te concentras en:", options: [{t: "La devoción y el fervor del sentimiento amoroso.", c: "RO"}, {t: "La belleza lírica y el peso filosófico de la frase.", c: "MO"}, {t: "Prefiero textos con diálogos directos y frescos.", c: "AM"}, {t: "La estructura métrica y el contraste de metáforas.", c: "AZ"}]},
+      {text: "Las ruinas de la ciudad flotante de Aethelgard aún desprendían un fulgor azulado. Hacía tres siglos que la gravedad había dejado de funcionar.", q: "¿Qué despierta en ti este pasaje?", options: [{t: "Comprender la física y las reglas de este mundo.", c: "VE"}, {t: "Saber con exactitud qué catástrofe ocurrió.", c: "AZ"}, {t: "Ganas de ver una persecución entre ruinas colapsando.", c: "NA"}, {t: "Sentir la melancolía por un mundo grandioso perdido.", c: "RO"}]},
+      {text: "Dijo que no volvería, pero dejó la ventana abierta y la cafetera puesta. Hay mentiras que son puras invitaciones.", q: "¿Cómo interpretas este microrrelato?", options: [{t: "El sutil juego de vulnerabilidad y seducción humana.", c: "RO"}, {t: "Me saca una sonrisa cómplice por su ironía ingeniosa.", c: "AM"}, {t: "Reflexiono sobre las contradicciones del apego.", c: "MO"}, {t: "Anticipo una trampa o giro a punto de estallar.", c: "NA"}]},
+      {q: "¿Qué tipo de protagonista te resulta más cautivador?", options: [{t: "Un detective brillante, calculador y metódico.", c: "AZ"}, {t: "Un héroe o explorador en reinos desconocidos.", c: "VE"}, {t: "Alguien imperfecto y cotidiano con quien reírme.", c: "AM"}, {t: "Un alma atormentada en un dilema ético o pasional.", c: "RO"}]},
+      {q: "¿Cuál de estas opciones describe tu giro de trama ideal?", options: [{t: "Una revelación lógica impecable que estuvo oculta a plena vista.", c: "AZ"}, {t: "Una traición desgarradora entre personas que se aman.", c: "RO"}, {t: "Un susto impactante o una amenaza mortal imprevista.", c: "NA"}, {t: "Descubrir un sistema de magia o civilización entera secreta.", c: "VE"}]},
+      {q: "Cuando encuentras prosa poética o descriptiva dentro de una novela:", options: [{t: "Leo con lentitud y subrayo pensamientos.", c: "MO"}, {t: "Lo disfruto al máximo si suma profundidad al romance.", c: "RO"}, {t: "Me lo salto rápido para continuar con el avance de la acción.", c: "AM"}, {t: "Analizo si el autor escondió una clave de la trama allí.", c: "AZ"}]},
+      {q: "Si fueras a escribir un libro hoy, ¿de qué trataría?", options: [{t: "Un viaje mitológico épico para salvar una era.", c: "VE"}, {t: "Un intrincado crimen sin resolver en la alta sociedad.", c: "AZ"}, {t: "Una conmovedora historia de amor cruzada por el destino.", c: "RO"}, {t: "Un thriller frenético lleno de persecuciones y peligros.", c: "NA"}]},
+      {q: "¿Qué es lo que más te impulsa a abandonar un libro?", options: [{t: "Que resulte excesivamente solemne, denso o carente de humor.", c: "AM"}, {t: "Que la trama sea obvia y predecible desde el inicio.", c: "AZ"}, {t: "Que los personajes se sientan planos y sin pasión.", c: "RO"}, {t: "Que sea plano, hiperrealista y sin asombro.", c: "VE"}]},
+      {q: "¿Qué sensación buscas experimentar al cerrar la última página?", options: [{t: "Pura adrenalina, como bajar de una montaña rusa.", c: "NA"}, {t: "Paz contemplativa y resonancia interior duradera.", c: "MO"}, {t: "La placentera satisfacción intelectual de encajar todas las piezas.", c: "AZ"}, {t: "Una sonrisa reconfortante y la gratitud de un rato agradable.", c: "AM"}]},
+      {q: "Frente a un poema o texto oscuro acerca de la existencia:", options: [{t: "Me fascina explorar los rincones de la psique humana.", c: "MO"}, {t: "Me contagia suspenso, inquietud e intriga.", c: "NA"}, {t: "Analizo el rigor conceptual y el contexto del autor.", c: "AZ"}, {t: "Prefiero pasar la página y buscar una lectura más luminosa.", c: "AM"}]},
+      {q: "¿Cuál de estas frases define mejor tu filosofía de lector?", options: [{t: "Leer es viajar y trascender los límites de la realidad ordinaria.", c: "VE"}, {t: "Leer es sentir con la mente y pensar con el corazón abierto.", c: "RO"}, {t: "Leer es decodificar los acertijos más hondos de la verdad.", c: "AZ"}, {t: "Leer es el refugio más alegre para desconectar del estrés.", c: "AM"}]},
+      {text: "Dicen que en el fondo del bosque las sombras no pertenecen a los árboles, sino a lo que camina entre ellos cuando nadie mira.", q: "Al leer esto, tu inclinación instintiva es:", options: [{t: "Querer cartografiar y entender la mitología de ese bosque.", c: "VE"}, {t: "Ponerte en guardia por el peligro latente acechando.", c: "NA"}, {t: "Apreciar la metáfora sobre la soledad y lo desconocido.", c: "MO"}, {t: "Preferir que el protagonista escape hacia algo más cálido.", c: "AM"}]},
+      {q: "¿Cómo prefieres que se construya el conflicto en la historia?", options: [{t: "Un enigma con pistas sutiles y reglas claras.", c: "AZ"}, {t: "Una carrera contrarreloj donde cada segundo es crítico.", c: "NA"}, {t: "Un desgarro emocional donde no existe solución fácil.", c: "RO"}, {t: "Una expedición llena de culturas y leyes fantásticas.", c: "VE"}]},
+      {text: "El arte de perder se aprende fácilmente; tantas cosas parecen decididas a perderse, que su pérdida no es un desastre.", q: "Ante esta cita de Elizabeth Bishop, te llama la atención:", options: [{t: "La hondura filosófica sobre la aceptación del duelo.", c: "MO"}, {t: "La resonancia melancólica y el dolor contenido tras las palabras.", c: "RO"}, {t: "La estructura estoica y equilibrada del argumento.", c: "AZ"}, {t: "Prefiero relatos con dinamismo que no se queden en la pérdida.", c: "AM"}]},
+      {q: "¿Qué lugar ocupan los pasajes descriptivos en tus lecturas?", options: [{t: "Son indispensables si levantan ciudades y mundos vívidos.", c: "VE"}, {t: "Son memorables si desnudan el alma y los estados del espíritu.", c: "MO"}, {t: "Estorban si frenan la aceleración y la intriga.", c: "NA"}, {t: "Son ideales si son breves, chispeantes y van al punto.", c: "AM"}]},
+      {q: "¿Qué portada llamaría de inmediato tu atención en una librería?", options: [{t: "Un mapa antiguo intrincado con sellos mágicos e insignias.", c: "VE"}, {t: "Un diseño minimalista sobrio con una sola frase sugerente.", c: "MO"}, {t: "Una composición en claroscuro con tipografía rota e inquietante.", c: "NA"}, {t: "Una ilustración viva, colorida y moderna con ingenio gráfico.", c: "AM"}]}
+    ];
+
+    let currentQ = 0;
+    const scores = {AZ: 0, VE: 0, RO: 0, AM: 0, NA: 0, MO: 0};
+
+    function renderQuestion() {
+      const qData = questions[currentQ];
+      const progressRatio = Math.max(5, Math.round(((currentQ + 1) / questions.length) * 100));
+
+      document.getElementById('question-counter').innerHTML = `
+        <span class="w-2 h-2 rounded-full bg-brand-sage inline-block animate-pulse"></span>
+        Pregunta ${currentQ + 1} de ${questions.length}
+      `;
+      document.getElementById('progress-percent').innerText = `${progressRatio}%`;
+      document.getElementById('progress-bar').style.width = `${progressRatio}%`;
+
+      const textContainer = document.getElementById('text-container');
+      const quoteContent = document.getElementById('quote-content');
+      if (qData.text) {
+        quoteContent.innerText = qData.text;
+        textContainer.classList.remove('hidden');
+      } else {
+        textContainer.classList.add('hidden');
+        quoteContent.innerText = '';
+      }
+
+      document.getElementById('question-text').innerText = `${currentQ + 1}. ${qData.q}`;
+
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      qData.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'option-btn-3d w-full text-left p-4 sm:p-5 rounded-2xl flex items-center justify-between group cursor-pointer relative';
+
+        btn.innerHTML = `
+          <div class="flex items-center gap-3.5 pr-2">
+            <span class="letter-disc flex-shrink-0 w-9 h-9 rounded-xl text-stone-700 font-bold text-sm flex items-center justify-center border border-stone-200/80 transition-all duration-200">
+              ${String.fromCharCode(65 + idx)}
+            </span>
+            <span class="text-stone-800 font-medium text-sm sm:text-base group-hover:text-stone-950 transition-colors">
+              ${opt.t}
+            </span>
+          </div>
+          <div class="opacity-0 group-hover:opacity-100 transform translate-x-1 group-hover:translate-x-0 transition-all text-brand-warmbronze flex-shrink-0">
+            <div class="w-7 h-7 rounded-full bg-amber-50 flex items-center justify-center border border-amber-200/80 shadow-xs">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        `;
+
+        btn.onclick = () => selectOption(opt.c);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function selectOption(colorCode) {
+      if (scores.hasOwnProperty(colorCode)) {
+        scores[colorCode]++;
+      }
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quiz-ui').classList.add('hidden');
+      const resultUi = document.getElementById('result-ui');
+      resultUi.classList.remove('hidden');
+
+      // Rank profiles strictly by score descending
+      const sortedKeys = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+      const primaryKey = sortedKeys[0];
+      const secondaryKey = sortedKeys[1];
+      const primary = profiles[primaryKey];
+      const secondary = profiles[secondaryKey];
+
+      // Primary Dominant Profile Data
+      document.getElementById('primary-name').innerText = primary.name;
+      document.getElementById('primary-badge').style.backgroundColor = primary.color;
+      document.getElementById('primary-score-pill').innerText = `${scores[primaryKey]} pts`;
+      const pImg = document.getElementById('primary-img');
+      pImg.src = primary.img;
+      pImg.alt = primary.name;
+
+      // Secondary Complementary Tendency Data
+      document.getElementById('secondary-name').innerText = secondary.name;
+      document.getElementById('secondary-badge').style.backgroundColor = secondary.color;
+      document.getElementById('secondary-score-pill').innerText = `${scores[secondaryKey]} pts`;
+      const sImg = document.getElementById('secondary-img');
+      sImg.src = secondary.img;
+      sImg.alt = secondary.name;
+
+      // Primary Psychological Description
+      document.getElementById('profile-desc').innerText = primary.desc;
+
+      // Render 6 archetypes breakdown with 3D Medallion images, exact scores and highlights
+      const archetypesGrid = document.getElementById('archetypes-grid');
+      archetypesGrid.innerHTML = '';
+
+      const archetypeOrder = ['AZ', 'VE', 'RO', 'AM', 'NA', 'MO'];
+      archetypeOrder.forEach(key => {
+        const arch = profiles[key];
+        const isPrimary = (key === primaryKey);
+        const isSecondary = (key === secondaryKey);
+
+        const card = document.createElement('div');
+        let cardClasses = 'flex flex-col items-center p-3 rounded-2xl border transition-all text-center relative bg-white ';
+
+        if (isPrimary) {
+          cardClasses += 'border-amber-500 ring-2 ring-amber-500/50 shadow-md bg-amber-50/40';
+        } else if (isSecondary) {
+          cardClasses += 'border-stone-400 ring-1 ring-stone-400 shadow-sm bg-stone-50';
+        } else {
+          cardClasses += 'border-stone-200 opacity-70 hover:opacity-100 shadow-2xs';
+        }
+        card.className = cardClasses;
+
+        card.innerHTML = `
+          ${isPrimary ? '<span class="absolute -top-2 px-1.5 py-0.5 rounded-full bg-brand-warmbronze text-[9px] font-black text-white uppercase tracking-wider shadow-xs z-10">1º Ganador</span>' : ''}
+          ${isSecondary ? '<span class="absolute -top-2 px-1.5 py-0.5 rounded-full bg-stone-600 text-[9px] font-black text-white uppercase tracking-wider shadow-xs z-10">2º Afín</span>' : ''}
+          <div class="w-14 h-14 rounded-full overflow-hidden shadow-md mb-2 mt-1 border-2 transition-transform transform group-hover:scale-105 bg-stone-100" style="border-color: ${arch.color};">
+            <img src="${arch.img}" alt="${arch.name}" class="w-full h-full object-cover"/>
+          </div>
+          <span class="text-xs font-bold text-stone-800 leading-tight">${arch.titleShort}</span>
+          <span class="text-[11px] font-extrabold mt-0.5" style="color: ${arch.color};">${scores[key]} pts</span>
+        `;
+        archetypesGrid.appendChild(card);
+      });
+
+      // Recommended Books: exactly 2 from primary + 2 from secondary
+      const booksGrid = document.getElementById('books-grid');
+      booksGrid.innerHTML = '';
+
+      const recommendedList = [
+        ...primary.books.slice(0, 2).map(b => ({...b, profileType: 'primary', profileObj: primary})),
+        ...secondary.books.slice(0, 2).map(b => ({...b, profileType: 'secondary', profileObj: secondary}))
+      ];
+
+      recommendedList.forEach(item => {
+        const isPrim = item.profileType === 'primary';
+        const card = document.createElement('div');
+        card.className = `group relative overflow-hidden rounded-2xl p-4 sm:p-5 border ${isPrim ? 'border-brand-warmbronze/50' : 'border-stone-300'} bg-gradient-to-br from-white via-[#fcfbf9] to-[#f4f7f4] shadow-[0_4px_14px_rgba(20,45,30,0.05),inset_0_1px_1px_white] hover:shadow-[0_12px_24px_-4px_rgba(20,48,35,0.14),inset_0_1px_1px_white] hover:border-brand-warmbronze/80 transition-all duration-300 flex flex-col justify-between`;
+
+        const badgeLabel = isPrim
+          ? `Perfil Principal: ${item.profileObj.titleShort}`
+          : `Tendencia Secundaria: ${item.profileObj.titleShort}`;
+
+        card.innerHTML = `
+          <div>
+            <!-- Top badge banner indicating Profile origin -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold text-white shadow-xs" style="background-color: ${item.profileObj.color};">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                ${badgeLabel}
+              </span>
+              <span class="w-8 h-8 rounded-xl flex items-center justify-center text-white shadow-xs" style="background-color: ${item.profileObj.color};">
+                <span class="material-symbols-outlined text-sm">${item.icon}</span>
+              </span>
+            </div>
+
+            <!-- Book genre/tag -->
+            <div class="mb-2">
+              <span class="inline-block px-2 py-0.5 rounded text-[10.5px] font-semibold text-stone-600 bg-stone-100 border border-stone-200/80">
+                ${item.tag}
+              </span>
+            </div>
+            
+            <div class="space-y-1 my-1">
+              <h4 class="font-serif font-bold text-base sm:text-lg text-stone-900 leading-snug group-hover:text-brand-deep transition-colors">
+                ${item.title}
+              </h4>
+              <p class="text-xs font-semibold text-brand-warmbronze tracking-wide flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">edit</span>
+                ${item.author}
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+            <span class="text-stone-500 font-medium">Catálogo Oficial</span>
+            <button type="button" class="inline-flex items-center gap-1 font-semibold text-brand-forest hover:text-brand-warmbronze transition-colors cursor-pointer group-hover:translate-x-0.5 transition-transform" onclick="this.innerHTML='<span class=\\'material-symbols-outlined text-xs text-emerald-600\\'>check_circle</span> En tu lista'">
+              <span class="material-symbols-outlined text-xs">bookmark_add</span>
+              <span>Guardar</span>
+            </button>
+          </div>
+        `;
+        booksGrid.appendChild(card);
+      });
+
+      // Scroll smoothly to results card top
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function restartQuiz() {
+      currentQ = 0;
+      for (const key in scores) {
+        scores[key] = 0;
+      }
+      document.getElementById('result-ui').classList.add('hidden');
+      document.getElementById('quiz-ui').classList.remove('hidden');
+      renderQuestion();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Set listener for restart button
+    document.getElementById('btn-restart').addEventListener('click', restartQuiz);
+
+    // Initial render
+    renderQuestion();
+  </script>
+  <!-- END: Quiz Logic Script -->
+
+
+</body>
+
+</html>

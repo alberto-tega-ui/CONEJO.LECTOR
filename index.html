@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="light stitch-anim-fade-in" lang="es" style="scroll-behavior: smooth;">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>La madriguera del conejo lector — Diagnóstico Literario</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&amp;family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#1b2c22",
+            "surface-container": "#183226",
+            "inverse-on-surface": "#dfe3e0",
+            "inverse-surface": "#24372c",
+            "surface-container-low": "#12261e",
+            "tertiary-fixed": "#baeed9",
+            "tertiary-fixed-dim": "#9ed1bd",
+            "on-secondary-container": "#fff3df",
+            "error": "#b3261e",
+            "on-primary-fixed": "#012016",
+            "on-surface": "#1d3226",
+            "outline": "#658571",
+            "surface-variant": "#224436",
+            "primary-fixed-dim": "#accebe",
+            "on-secondary-fixed-variant": "#5a4300",
+            "outline-variant": "#9cb4a5",
+            "on-secondary-fixed": "#251a00",
+            "secondary-container": "#8c5638",
+            "primary-container": "#153026",
+            "surface": "#f1f5f2",
+            "on-primary": "#18362b",
+            "surface-bright": "#f9fcf9",
+            "primary-fixed": "#c8ead9",
+            "background": "#edf2ee",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#3d5446",
+            "on-error-container": "#410002",
+            "on-tertiary-fixed-variant": "#1d4f40",
+            "secondary-fixed-dim": "#ecc15a",
+            "on-error": "#ffffff",
+            "on-secondary": "#2e170c",
+            "on-tertiary-fixed": "#002117",
+            "surface-container-high": "#203f31",
+            "secondary": "#dfb175",
+            "error-container": "#f9dedc",
+            "tertiary-container": "#1a392d",
+            "tertiary": "#86aa91",
+            "surface-container-highest": "#284d3d",
+            "on-primary-container": "#a3c8b4",
+            "surface-tint": "#244b39",
+            "on-primary-fixed-variant": "#2e4d40",
+            "on-tertiary-container": "#90b7a0",
+            "on-tertiary": "#00382a",
+            "surface-dim": "#dfe6e0",
+            "secondary-fixed": "#ffdf99",
+            "primary": "#204634",
+            "inverse-primary": "#a3c8b4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "2xl": "1.5rem",
+            "3xl": "1.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "body-lg": ["\"Source Sans 3\""],
+            "label-sm": ["\"Source Sans 3\""],
+            "headline-md": ["\"Source Serif 4\""],
+            "body-md": ["\"Source Sans 3\""],
+            "body-sm": ["\"Source Sans 3\""],
+            "headline-xl": ["\"Source Serif 4\""],
+            "headline-sm": ["\"Source Serif 4\""],
+            "headline-lg": ["\"Source Serif 4\""],
+            "label-md": ["\"Source Sans 3\""]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* Clarified Botanical atmospheric ambient background */
+    .botanical-bg-glow {
+      background: radial-gradient(circle at 45% 15%, rgba(206, 222, 211, 0.75) 0%, rgba(225, 236, 228, 0.6) 40%, rgba(237, 243, 238, 0.95) 85%);
+    }
+
+    .leaf-pattern-texture {
+      background-color: #edf2ee;
+      background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(134, 170, 145, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 65%, rgba(214, 182, 148, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(162, 191, 172, 0.22) 0%, transparent 60%),
+        radial-gradient(circle at 75% 15%, rgba(186, 212, 196, 0.25) 0%, transparent 45%);
+    }
+
+    /* 3D Claymorphic and Neumorphic sculpted effects with enhanced shadows for light background */
+    .clay-card {
+      background: linear-gradient(145deg, rgba(27, 54, 42, 0.96) 0%, rgba(16, 36, 27, 0.98) 100%);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.22),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+        0 24px 44px -10px rgba(18, 38, 29, 0.35),
+        0 8px 18px -4px rgba(18, 38, 29, 0.2);
+      border: 1px solid rgba(172, 206, 190, 0.3);
+    }
+
+    .clay-card:hover {
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.55),
+        0 32px 58px -12px rgba(14, 30, 23, 0.45),
+        0 14px 26px -6px rgba(14, 30, 23, 0.25);
+      border-color: rgba(223, 177, 117, 0.6);
+    }
+
+    /* Warm Clay Terracotta Card variant */
+    .clay-card-warm {
+      background: linear-gradient(145deg, rgba(118, 56, 32, 0.96) 0%, rgba(72, 32, 16, 0.98) 100%);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.25),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+        0 24px 44px -10px rgba(90, 40, 20, 0.35),
+        0 8px 18px -4px rgba(90, 40, 20, 0.2);
+      border: 1px solid rgba(240, 196, 142, 0.35);
+    }
+
+    .clay-card-warm:hover {
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.35),
+        0 32px 58px -12px rgba(90, 40, 20, 0.45),
+        0 14px 26px -6px rgba(90, 40, 20, 0.25);
+      border-color: rgba(240, 196, 142, 0.7);
+    }
+
+    /* Ochre / Warm Caramel Clay variant */
+    .clay-card-ochre {
+      background: linear-gradient(145deg, rgba(168, 105, 52, 0.96) 0%, rgba(108, 62, 28, 0.98) 100%);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.28),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.45),
+        0 24px 44px -10px rgba(120, 70, 30, 0.35),
+        0 8px 18px -4px rgba(120, 70, 30, 0.2);
+      border: 1px solid rgba(255, 225, 160, 0.38);
+    }
+
+    .clay-card-ochre:hover {
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.38),
+        0 32px 58px -12px rgba(120, 70, 30, 0.45),
+        0 14px 26px -6px rgba(120, 70, 30, 0.25);
+      border-color: rgba(255, 225, 160, 0.75);
+    }
+
+    /* Sage Jade Clay variant */
+    .clay-card-sage {
+      background: linear-gradient(145deg, rgba(58, 104, 76, 0.96) 0%, rgba(32, 66, 47, 0.98) 100%);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.26),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.45),
+        0 24px 44px -10px rgba(32, 66, 47, 0.35),
+        0 8px 18px -4px rgba(32, 66, 47, 0.2);
+      border: 1px solid rgba(186, 224, 206, 0.38);
+    }
+
+    .clay-card-sage:hover {
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.36),
+        0 32px 58px -12px rgba(32, 66, 47, 0.45),
+        0 14px 26px -6px rgba(32, 66, 47, 0.25);
+      border-color: rgba(186, 224, 206, 0.75);
+    }
+
+    /* Clay Ribbon Container - Deep lush evergreen with elevated drop shadow */
+    .clay-ribbon {
+      background: linear-gradient(145deg, rgba(22, 49, 36, 0.97) 0%, rgba(13, 31, 23, 0.98) 100%);
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.18),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+        0 26px 50px -12px rgba(16, 38, 28, 0.32),
+        0 10px 22px -5px rgba(16, 38, 28, 0.18);
+      border: 1px solid rgba(145, 186, 160, 0.32);
+    }
+
+    /* Light Clay Tag / Pill for hero badge and steps */
+    .clay-pill-light {
+      background: linear-gradient(145deg, #ffffff 0%, #e6eee7 100%);
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9),
+        0 6px 14px -3px rgba(32, 70, 52, 0.12),
+        0 2px 4px rgba(32, 70, 52, 0.06);
+      border: 1px solid rgba(120, 160, 136, 0.28);
+    }
+
+    /* 3D Circular Coins / Icon Chips */
+    .icon-disc-3d {
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.35),
+        inset 0 -3px 4px rgba(0, 0, 0, 0.5),
+        0 10px 18px -4px rgba(0, 0, 0, 0.45),
+        0 4px 8px -2px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .group:hover .icon-disc-3d {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.45),
+        inset 0 -3px 4px rgba(0, 0, 0, 0.5),
+        0 14px 24px -4px rgba(0, 0, 0, 0.55),
+        0 6px 12px -2px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Tactile 3D Buttons */
+    .button-3d-secondary {
+      background: linear-gradient(145deg, #dfb175 0%, #b27a56 100%);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.55),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.35),
+        0 12px 24px -6px rgba(160, 100, 50, 0.4),
+        0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .button-3d-secondary:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.7),
+        0 18px 30px -6px rgba(190, 130, 75, 0.5),
+        0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .button-3d-secondary:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.4),
+        0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-3d-pill {
+      background: linear-gradient(145deg, rgba(28, 58, 44, 0.95) 0%, rgba(16, 36, 27, 0.98) 100%);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.4),
+        0 10px 20px -4px rgba(20, 50, 36, 0.25);
+      border: 1px solid rgba(145, 186, 160, 0.35);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .button-3d-pill:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(223, 177, 117, 0.6);
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.3),
+        0 14px 26px -4px rgba(20, 50, 36, 0.35);
+    }
+
+    /* Subtle floating animation for ethereal rabbit shadows */
+    @keyframes gentleSway {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-8px) rotate(1.2deg);
+      }
+    }
+
+    .rabbit-float-1 {
+      animation: gentleSway 14s ease-in-out infinite;
+    }
+
+    .rabbit-float-2 {
+      animation: gentleSway 18s ease-in-out 3s infinite reverse;
+    }
+
+    .rabbit-float-3 {
+      animation: gentleSway 16s ease-in-out 1.5s infinite;
+    }
+
+    .rabbit-float-4 {
+      animation: gentleSway 20s ease-in-out 4s infinite reverse;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col relative overflow-x-hidden leaf-pattern-texture">
+  <!-- Atmospheric Botanical & Clay Relieve Layer (Clarified soft sage/moss/linen) -->
+  <div class="fixed inset-0 botanical-bg-glow pointer-events-none z-0"></div>
+  <div
+    class="fixed -top-32 -right-32 w-[38rem] h-[38rem] rounded-full bg-[#cadbc9]/50 blur-[100px] pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed top-1/3 -left-48 w-[42rem] h-[42rem] rounded-full bg-[#e3d7c5]/45 blur-[110px] pointer-events-none z-0">
+  </div>
+  <div
+    class="fixed -bottom-48 right-1/4 w-[40rem] h-[40rem] rounded-full bg-[#bfd5c6]/45 blur-[100px] pointer-events-none z-0">
+  </div>
+  <!-- SILUETAS Y SOMBRAS DE CONEJOS DIFUMINADAS DE FONDO (Marca de agua etérea orgánica) -->
+  <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+    <div class="absolute inset-0 bg-repeat bg-center opacity-[0.08] mix-blend-multiply blur-[0.5px]"
+      style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAsLfc5qHy3-0B4YBJwPM7Dw3pdf7D_2eFlNvOiTkopH3m91SgJzjP-kgR0PakR-xUojcIsd5QyjvQwTFfjWiWxIxAe5Rle2A6Qmwvbi-jKc-mtPVL5AnfJz5L8KvMpBBPVp7k8AKfMB72K2c6mSKIZIHxix9kUbq3ntHHckK6fkIllawPq96pH1WJO4SL0FuGK99joG-GY3O3HtpBYuR_i20jP7Ks_NnzPyhvQWZvSI0cPAjM0C7q0U7KRyhQ5Wtff&quot;); background-size: 520px;">
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-[#edf2ee]/40 via-transparent to-[#edf2ee]/50 pointer-events-none">
+    </div>
+  </div>
+  <!-- Header / Navigation Bar with Organic Squircle Floating Dock -->
+  <header class="w-full z-40 sticky top-2 px-4 sm:px-8 transition-all">
+    <div
+      class="max-w-7xl mx-auto rounded-full clay-ribbon px-6 sm:px-8 flex items-center h-16 backdrop-blur-md shadow-xl justify-center">
+      <a class="flex items-center gap-3 group focus:outline-none" href="#">
+        <div
+          class="w-10 h-10 rounded-full p-1 bg-gradient-to-br from-[#244b39] to-[#12281e] icon-disc-3d flex items-center justify-center shrink-0 border border-[#86aa91]/40">
+          <img alt="La Madriguera del Conejo Lector" class="w-7 h-7 object-contain drop-shadow rounded-full"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyebqMircQX7Bj3DMtNICMtZf88tWaPiS8W1OCcRNZjafp9uFJaRU4h7FWkY2ETTADbe7WLRWzOsVtTiYohnE6OnA0pHwtcakHs9omk8Iia9pv1guBLAgO7K3249l6IQ8Qnstzq8xj7W60BIXMFV3LLSEpXgsO5YDEYdO6sIGH0c90wYdi7K2sQKGFRv4hTjX0FI9XDc79TU7TpxzBHKBjpTtu-DBIf7ATDop1HW8kTQ_cfTXEi2-KPDjIV212N4SR">
+        </div>
+        <div class="flex flex-col"><span
+            class="font-headline-md text-base sm:text-lg font-semibold text-[#f1f7f3] tracking-tight leading-none group-hover:text-secondary transition-colors drop-shadow-sm">La
+            Madriguera</span><span
+            class="font-label-sm text-[10.5px] uppercase tracking-widest text-secondary mt-0.5">del Conejo Lector</span>
+        </div>
+      </a></div>
+  </header>
+  <main class="flex-grow z-10">
+    <!-- Hero Botanical Section with Sculpted Clay Layout -->
+    <section class="relative max-w-7xl mx-auto px-6 sm:px-8 pt-4 sm:pt-6 pb-6 lg:pb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div class="lg:col-span-7 flex flex-col items-start max-w-[66ch]">
+          <div
+            class="inline-flex items-center gap-2.5 px-4 py-1 rounded-full clay-pill-light border border-[#658571]/35 mb-3">
+            <div
+              class="w-6 h-6 rounded-full bg-gradient-to-tr from-[#8c5638] to-[#dfb175] flex items-center justify-center text-on-secondary icon-disc-3d">
+              <span class="material-symbols-outlined text-[13px]" data-icon="auto_stories"
+                style="font-variation-settings: &quot;FILL&quot; 1;">auto_stories</span></div><span
+              class="font-label-sm text-[11px] text-[#244b39] tracking-widest uppercase font-bold">La Madriguera ·
+              Diagnóstico Literario</span>
+          </div>
+          <h1
+            class="font-headline-xl text-3xl sm:text-4xl lg:text-[46px] lg:leading-[52px] text-[#12281e] tracking-tight mb-3 font-bold text-balance drop-shadow-sm">
+            Diagnóstico Literario: Descubre tu Perfil de Lector</h1>
+          <p class="font-body-lg text-base sm:text-lg text-[#2d4738] mb-4 leading-relaxed font-normal">Un mapa sensorial
+            hacia tus afinidades secretas de lectura. A través de seis senderos ilustrados inspirados en el follaje, la
+            textura orgánica y la materia viva de los libros encuadernados, revelamos el compás exacto que guía tu
+            imaginación.</p>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto"><a
+              class="inline-flex items-center justify-center gap-3 px-8 py-3.5 button-3d-secondary text-[#2e170c] font-bold text-sm sm:text-base rounded-full text-center group"
+              href="../quiz_interactivo_recomendaciones_por_perfil_principal_y_secundario/quiz.html"><span class="">Comenzar Diagnóstico</span><span
+                class="material-symbols-outlined text-[19px] transition-transform group-hover:translate-x-1"
+                data-icon="arrow_forward">arrow_forward</span></a><a
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full button-3d-pill text-[#f1f7f3] font-semibold text-sm sm:text-base text-center group"
+              href="#perfiles"
+              onclick="event.preventDefault(); document.getElementById('perfiles').scrollIntoView({behavior: 'smooth'});"><span
+                class="material-symbols-outlined text-secondary text-[20px] transition-transform group-hover:rotate-45"
+                data-icon="palette">palette</span><span class="">Explorar 6 Arquetipos</span></a></div>
+          <div
+            class="mt-4 pt-4 border-t border-[#86aa91]/35 flex flex-wrap items-center gap-4 sm:gap-6 text-[#3d5446] font-body-sm text-xs sm:text-sm">
+            <div class="flex items-center gap-2.5 clay-pill-light px-3 py-1 rounded-full">
+              <div
+                class="w-6 h-6 rounded-full bg-[#183226] flex items-center justify-center text-secondary icon-disc-3d border border-[#86aa91]/30">
+                <span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span></div><span
+                class="font-semibold text-[#183226]">3 minutos de lectura</span>
+            </div>
+            <div class="flex items-center gap-2.5 clay-pill-light px-3 py-1 rounded-full">
+              <div
+                class="w-6 h-6 rounded-full bg-[#183226] flex items-center justify-center text-secondary icon-disc-3d border border-[#86aa91]/30">
+                <span class="material-symbols-outlined text-[14px]" data-icon="psychology">psychology</span></div><span
+                class="font-semibold text-[#183226]">12 dilemas sensoriales</span>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 relative">
+          <div
+            class="relative overflow-hidden clay-card p-2.5 shadow-2xl transition-all duration-300 hover:scale-[1.015] rounded-full max-w-sm mx-auto">
+            <div class="relative overflow-hidden rounded-full"><img
+                alt="Escultura 3D del Conejo Lector con gafas leyendo un libro botánico"
+                class="w-full h-[380px] object-cover transition-transform duration-700 hover:scale-105 drop-shadow rounded-full"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1XkP_4oCrSIWkWsvwqEIhtuuB1O3Z2eNnqHKRGVbLg9Y8R7WjbrqGCgQmYk3kL1dfdnFrlY_NGRTD0bosnw_4ebZbWQdQTPrHxJtV7IXy-N7A2BKtX6dYG6ivRrnM8_lmUR-dNJSJ4yimQfOGhrzrthsrngKf679SPn3akpwzhrM1n0Xo0OmBmbQ9wj-4SyFP-JGyMVQENGYCPDISKPLuuEi7tYzyZhjRsKVh2kDHZMnMvVqXJQ7ODauQ">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1712]/40 via-transparent to-black/10 pointer-events-none">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- How It Works: Ribbon of 4 Pillars styled as Organic 3D Rounded Capsules -->
+    <!-- Profiles Preview Section: The 6 Literary Profiles with 3D Rounded Shapes -->
+    <section class="py-6 sm:py-8 max-w-7xl mx-auto px-6 sm:px-8" id="perfiles">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-3">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full clay-pill-light border border-[#658571]/30 mb-2 shadow-sm">
+            <span class="font-label-sm text-[11px] text-[#244b39] uppercase tracking-widest font-bold">El Espectro de
+              Lectura</span></div>
+          <h2 class="font-headline-xl text-2xl sm:text-3xl text-[#12281e] font-bold tracking-tight">Los 6 Perfiles
+            Literarios</h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div
+          class="clay-card rounded-[32px] p-6 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] group relative overflow-hidden"
+          style="background: linear-gradient(145deg, rgb(16, 35, 52) 0%, rgb(12, 24, 36) 100%); border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: rgba(255, 255, 255, 0.15) 0px 2px 2px inset, rgba(12, 24, 36, 0.5) 0px 24px 44px -10px;">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-sky-900/25 rounded-full blur-2xl pointer-events-none">
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-2 border-sky-300/50 icon-disc-3d relative shrink-0 bg-sky-950/80 mx-auto sm:mx-0">
+                <img alt="Lector Azul — El Analítico" class="w-full h-full object-cover rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZoGehAix0IQHfElOiYjDbjaimqKCewUZijdP_bLQjp7S43ajIIXtA9cx-YEQGPkidlPbTMhDwa_ZPJBE8NLUq3Clc-5qfCIbKjSDHJSzjY76_Q2PPcl3MQJoE1xtfTLYdyI9_SGlAg9zf4r5YI0JmOAMGNMExV0hlBHfMsFTzDP_KLk7RP9GiuqhbfCMsU0mXqkZqHFZ34b9ndeN5OYbGFZ9zYViNo0ZWpH7zYfF8K2zj0w3-jg8A9tiTuVZZvfwj">
+              </div><span
+                class="font-label-sm text-[11px] font-semibold px-3 py-1 rounded-full bg-sky-950/90 text-sky-200 border border-sky-400/40 shadow-inner">Perfil
+                Azul</span>
+            </div>
+            <h3 class="font-headline-md text-xl text-[#f1f7f3] font-semibold mb-2">El Analítico</h3>
+            <p class="font-body-sm text-sm text-[#b6cec0] leading-relaxed mb-4">Lees con calma, espíritu crítico y mucha
+              atención al detalle. Te gusta subrayar, hacerte preguntas y encontrar patrones o explicaciones lógicas
+              detrás de cada idea. Disfrutas los ensayos lúcidos, biografías bien fundamentadas y novelas policíacas o
+              thrillers donde cada pista cuenta. Para ti, leer es un ejercicio placentero para entender mejor cómo
+              funciona el mundo, la mente humana y la realidad.</p>
+          </div>
+          <div
+            class="pt-3 border-t border-[#86aa91]/30 flex items-center justify-between text-[#b6cec0] font-label-sm text-xs">
+            <span class="text-sky-100">Afinidad: Ensayo filosófico</span><span
+              class="text-sky-300 font-semibold">Paciencia y Rigor</span></div>
+        </div>
+        <div
+          class="clay-card-sage rounded-[32px] p-6 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] group relative overflow-hidden"
+          style="background: linear-gradient(145deg, rgb(20, 53, 39) 0%, rgb(13, 34, 24) 100%); border: 1px solid rgba(74, 222, 128, 0.38); box-shadow: rgba(255, 255, 255, 0.18) 0px 2px 2px inset, rgba(13, 34, 24, 0.5) 0px 24px 44px -10px;">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#accebe]/25 rounded-full blur-2xl pointer-events-none">
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-2 border-[#accebe]/60 icon-disc-3d relative shrink-0 bg-[#153026] mx-auto sm:mx-0">
+                <img alt="Lector Verde — El Explorador" class="w-full h-full object-cover rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3AcD7RboDTZcrSCJ2yWCSHsefygzLeEZtBEy_1b-OMXpPeNVkrRIn05_ZPgi4fXc_zHtOVYviPjIweOl-9Vvoi5y2oiZPVeyn4Wn0q74s4llwThobPTmNOxWk_TF9czbyUl-OPqCoA3qqYT_G8FiBY1MowxQsvcxnM0rGK2Jrxe1y4HCYmGvnMS5kfQUeR3q8mEDb4PDE7WAqkh-Fd4POEel5hWaTcbM7G3QJ8nR82qKjubFKfV4khofQD8cxgEjo">
+              </div><span
+                class="font-label-sm text-[11px] font-semibold px-3 py-1 rounded-full bg-[#153026]/95 text-[#c8ead9] border border-[#accebe]/50 shadow-inner">Perfil
+                Verde</span>
+            </div>
+            <h3 class="font-headline-md text-xl text-[#f1f7f3] font-semibold mb-2">El Explorador</h3>
+            <p class="font-body-sm text-sm text-[#e0ece5] leading-relaxed mb-4">Buscas escapar de la rutina y viajar a
+              mundos completamente nuevos construidos desde cero. Te fascinan las historias ricas en detalles, mapas,
+              culturas fascinantes y naturalezas vivas. No te importa que el ritmo sea pausado si la ambientación es
+              envolvente y te hace sentir dentro de la aventura. Para ti, un buen libro es un portal hacia lugares
+              remotos donde la imaginación no tiene límites.</p>
+          </div>
+          <div
+            class="pt-3 border-t border-[#accebe]/35 flex items-center justify-between text-[#c8ead9] font-label-sm text-xs">
+            <span class="text-[#e2e8e3]">Afinidad: Realismo &amp; Naturaleza</span><span
+              class="text-emerald-300 font-semibold">Textura Orgánica</span></div>
+        </div>
+        <div
+          class="clay-card-warm rounded-[32px] p-6 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] group relative overflow-hidden"
+          style="background: linear-gradient(145deg, rgb(61, 20, 22) 0%, rgb(38, 10, 12) 100%); border: 1px solid rgba(248, 113, 113, 0.42); box-shadow: rgba(255, 255, 255, 0.18) 0px 2px 2px inset, rgba(45, 10, 12, 0.5) 0px 24px 44px -10px;">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-rose-900/30 rounded-full blur-2xl pointer-events-none">
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-2 border-rose-300/50 icon-disc-3d relative shrink-0 bg-[#401814] mx-auto sm:mx-0">
+                <img alt="Lector Rojo — El Apasionado" class="w-full h-full object-cover rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm0cbHl5d-ctrzyke-wLhY1DB2ifNQjYy7zLy_xgZao0dM-oGdLs5HcaYvMg51z7IJbw30jny8LZ6fKDlqVzrXa21WrC0jHto4olpPk8_8r2cDvRAIgGdtvEJtITJKEh0GmZdpdPKgOgkg5pJT90d0UdjENd7eWOICuo5T8x9c2EULmEwqh-_fO9vpvktGLqx6X_xNQFJAAW8ry7hE6l66DAFzZUJ8gIXT6ECm4db0iu8ikYPD7f5z6zBlj_GtcGQz">
+              </div><span
+                class="font-label-sm text-[11px] font-semibold px-3 py-1 rounded-full bg-[#401814]/95 text-rose-200 border border-rose-400/45 shadow-inner">Perfil
+                Rojo</span>
+            </div>
+            <h3 class="font-headline-md text-xl text-[#f1f7f3] font-semibold mb-2">El Apasionado</h3>
+            <p class="font-body-sm text-sm text-[#f4ded8] leading-relaxed mb-4">Te conectas ante todo con el corazón y
+              las emociones de los personajes. Buscas historias intensas, dilemas morales difíciles y relaciones humanas
+              auténticas que te hagan sentir alegría, rabia o tristeza. Te conmueven los romances inolvidables, los
+              dramas familiares y los momentos que te dejan sin aliento. Para ti, leer significa vivir vidas ajenas con
+              total intensidad emocional.</p>
+          </div>
+          <div
+            class="pt-3 border-t border-[#dfb175]/35 flex items-center justify-between text-[#ecd0c8] font-label-sm text-xs">
+            <span class="text-rose-100">Afinidad: Drama &amp; Tensión</span><span
+              class="text-rose-300 font-semibold">Impacto Visceral</span></div>
+        </div>
+        <div
+          class="clay-card-ochre rounded-[32px] p-6 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] group relative overflow-hidden"
+          style="background: linear-gradient(145deg, rgb(58, 42, 13) 0%, rgb(37, 25, 4) 100%); border: 1px solid rgba(251, 191, 36, 0.48); box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 2px inset, rgba(45, 30, 8, 0.5) 0px 24px 44px -10px;">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-600/30 rounded-full blur-2xl pointer-events-none">
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-2 border-amber-300/55 icon-disc-3d relative shrink-0 bg-[#3d2412] mx-auto sm:mx-0">
+                <img alt="Lector Amarillo — El Curioso Ligero" class="w-full h-full object-cover rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOalgQH1pWkW8lKhHIzf8fnSVatoGgz680Byqpa0GQdxZIgvbgPMVH_PGFFOHMEwcWRIA8ADuvFt-e3n9wX7Xzl7DXhlZZataphK4qfcpjTTR24nLtLeWeUMWuWhkD8KU3e5DofHIiq3PB5LlqCSeMcmTmora6NXLXIEm0Argf-JVVFBVo7JoQKzBH7TVKsewkZd6Q_tPPmT22BiKbZGJNzt15f2btqmrplyHUs69-5tYqPWorxxf9sS5wQ92yrJBM">
+              </div><span
+                class="font-label-sm text-[11px] font-semibold px-3 py-1 rounded-full bg-[#3d2412]/95 text-amber-200 border border-amber-400/45 shadow-inner">Perfil
+                Amarillo</span>
+            </div>
+            <h3 class="font-headline-md text-xl text-[#f1f7f3] font-semibold mb-2">El Curioso Ligero</h3>
+            <p class="font-body-sm text-sm text-[#faeee4] leading-relaxed mb-4">Lees para despejar la mente,
+              entretenerte y pasar un buen rato sin complicaciones excesivas. Prefieres libros ágiles, historias con
+              humor inteligente, divulgación amena y capítulos dinámicos que enganchen desde la primera página.
+              Disfrutas saltar entre temas variados y aprender cosas curiosas sin aburrirte. Para ti, la lectura es el
+              mejor refugio cotidiano para desconectar y sonreír.</p>
+          </div>
+          <div
+            class="pt-3 border-t border-[#ffdf99]/40 flex items-center justify-between text-[#faeee4] font-label-sm text-xs">
+            <span class="text-amber-100">Afinidad: Ensayo e Ideas</span><span
+              class="text-amber-300 font-semibold">Agilidad Mental</span></div>
+        </div>
+        <div
+          class="clay-card rounded-[32px] p-6 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] group relative overflow-hidden"
+          style="background: linear-gradient(145deg, rgb(61, 31, 13) 0%, rgb(40, 18, 5) 100%); border: 1px solid rgba(251, 146, 60, 0.48); box-shadow: rgba(255, 255, 255, 0.18) 0px 2px 2px inset, rgba(50, 22, 8, 0.5) 0px 24px 44px -10px;">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-orange-900/25 rounded-full blur-2xl pointer-events-none">
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-2 border-orange-400/55 icon-disc-3d relative shrink-0 bg-orange-950 mx-auto sm:mx-0">
+                <img alt="Lector Naranja — Adrenalina" class="w-full h-full object-cover rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9PiFjKVXni81cA4odjaXNvRDx3GkP2r4V-35mme1U2oyvZBFBng1jZ6OnHaNAhMGhnJ3CgDy9Ddsj_RF7HT2TSYRRCRJ_0FYBS0QE_cYr5IP01ylhkv2gFq6ON7Yqq0NqD9h21ORrsbLf5ku8L5E2vEmFSsuctltC6VpJu29LAFrKOfqGCwKKnHSFUZtvsCGSVlUT5EPUhJyNZPSk-nFo13HaaxED9gZFynn8TAQUDeUsTEkNmhWWMTJXcxRsUA7J">
+              </div><span
+                class="font-label-sm text-[11px] font-semibold px-3 py-1 rounded-full bg-orange-950/90 text-orange-200 border border-orange-500/40 shadow-inner">Perfil
+                Naranja</span>
+            </div>
+            <h3 class="font-headline-md text-xl text-[#f1f7f3] font-semibold mb-2">Adrenalina</h3>
+            <p class="font-body-sm text-sm text-orange-100 leading-relaxed mb-4">Necesitas acción constante, misterio
+              electrizante y giros de guion impredecibles que te impidan soltar las páginas. Te aburren las
+              descripciones largas y la lentitud; prefieres tramas trepidantes, carreras contrarreloj, misterios oscuros
+              o relatos de supervivencia extrema. Para ti, un gran libro debe sentirse como una montaña rusa de tensión
+              donde siempre quieres leer un capítulo más.</p>
+          </div>
+          <div
+            class="pt-3 border-t border-[#86aa91]/30 flex items-center justify-between text-[#b6cec0] font-label-sm text-xs">
+            <span class="text-orange-100">Afinidad: Ficción Especulativa</span><span
+              class="text-orange-300 font-semibold">Vasto Alcance</span></div>
+        </div>
+        <div
+          class="clay-card rounded-[32px] p-6 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] group relative overflow-hidden"
+          style="background: linear-gradient(145deg, rgb(43, 20, 58) 0%, rgb(26, 9, 38) 100%); border: 1px solid rgba(192, 132, 252, 0.45); box-shadow: rgba(255, 255, 255, 0.18) 0px 2px 2px inset, rgba(35, 12, 50, 0.5) 0px 24px 44px -10px;">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-900/25 rounded-full blur-2xl pointer-events-none">
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-2xl border-2 border-purple-300/55 icon-disc-3d relative shrink-0 bg-purple-950 mx-auto sm:mx-0">
+                <img alt="Lector Morado — El Introspectivo" class="w-full h-full object-cover rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRW0TyolXKuRoQArjaGSI8nazX0oL3I7kElePxWbUV1uBRoD-WoFAESvsapA0f2KhUyNnnbtpimhsji_SnVRjbBShORyi4lH_92q5DlOBtDUTOMsbIOhetye59LWT8QJUeDLVehobOAQP8KqJmnHJIqP4bOeLutokaD0GP7tEpVTyzcWXmcgmy3Mlki-ar-EP4TU-zRfJLqtl9rk0KbNPD2hv29FjxUWDCZCkjH8Bbiaz7DKpiQ-1qY4bvnfDYrLY3">
+              </div><span
+                class="font-label-sm text-[11px] font-semibold px-3 py-1 rounded-full bg-purple-950/90 text-purple-200 border border-purple-500/40 shadow-inner">Perfil
+                Morado</span>
+            </div>
+            <h3 class="font-headline-md text-xl text-[#f1f7f3] font-semibold mb-2">El Introspectivo</h3>
+            <p class="font-body-sm text-sm text-purple-100 leading-relaxed mb-4">Valoras la belleza de las palabras, la
+              poesía de las frases y las reflexiones sobre el alma y el destino. No tienes prisa por llegar al final;
+              saboreas cada metáfora, el misterio de lo cotidiano y la psicología profunda de las historias. Te atrae el
+              realismo mágico, la filosofía y las historias que dejan huella íntima. Para ti, leer es un diálogo
+              silencioso contigo mismo que transforma tu mirada.</p>
+          </div>
+          <div
+            class="pt-3 border-t border-[#86aa91]/30 flex items-center justify-between text-[#b6cec0] font-label-sm text-xs">
+            <span class="text-purple-100">Afinidad: Fabulación &amp; Mito</span><span
+              class="text-purple-300 font-semibold">Profundidad Simbólica</span></div>
+        </div>
+      </div>
+    </section>
+    <!-- Interactive Atmospheric Quote / Final Invitation Section -->
+    <section class="pt-4 pb-8 sm:pt-6 sm:pb-10 relative" id="iniciar">
+      <div class="max-w-4xl mx-auto px-6 sm:px-8">
+        <div class="rounded-[32px] clay-ribbon p-6 sm:p-10 text-center relative overflow-hidden shadow-xl">
+          <div
+            class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-[#153026] via-[#244b39] to-[#dfb175] icon-disc-3d border border-[#dfb175]/50 flex items-center justify-center text-secondary mb-4">
+            <span class="material-symbols-outlined text-[32px]" data-icon="menu_book">menu_book</span></div>
+          <blockquote
+            class="font-headline-lg text-xl sm:text-2xl lg:text-3xl text-[#f1f7f3] italic mb-3 max-w-2xl mx-auto leading-snug">
+            “Un libro debe ser el hacha que rompa el mar helado dentro de nosotros.”</blockquote><cite
+            class="font-label-md text-xs sm:text-sm text-secondary not-italic tracking-widest uppercase font-semibold block mb-3">—
+            Franz Kafka</cite>
+          <p class="font-body-lg text-sm sm:text-base text-[#c1d6c8] mb-5 max-w-xl mx-auto leading-relaxed">Permite que
+            el follaje editorial te revele qué horizonte literario aguarda por ti esta temporada.</p><a
+            class="inline-flex items-center justify-center gap-3 px-8 py-3.5 button-3d-secondary text-[#2e170c] font-bold text-sm sm:text-base rounded-full group cursor-pointer"
+            href="../quiz_interactivo_recomendaciones_por_perfil_principal_y_secundario/quiz.html"><span class="">Comenzar el Cuestionario</span><span
+              class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1"
+              data-icon="arrow_forward">arrow_forward</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Footer with Sculpted Organic Styling -->
+  <footer class="w-full pb-4 pt-2 px-4 sm:px-8 transition-colors">
+    <div
+      class="max-w-7xl mx-auto rounded-full clay-ribbon px-6 sm:px-10 py-3.5 flex flex-col md:flex-row justify-between items-center w-full gap-3 shadow-lg">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-full p-1 bg-surface-container-high icon-disc-3d border border-[#86aa91]/30 flex items-center justify-center shrink-0">
+          <img alt="La madriguera del conejo lector" class="w-6 h-6 object-contain"
+            src="https://lh3.googleusercontent.com/aida/AEtjO1UENggBzAFPm4NEFfRM-9Rm10itZGIMpdQ7JUsZXbxwuj_gT_DT4IQNMaLuN8bg4HeUIOTvxL7GRqlGzYGzqXwHv6odyDMG8vJVds2Pv37UUaorbbnoyb5dE_itdVwvRmrn4OLbDeDPQuJPe8nJe2CNCXFgJ2SgXc1otdtJGxkzpI1HjWFLMw7vnKV5Fvx6i88zy_sO41qa1uxQbZLjbWqSB7B9y2qnijnSRisgq0bEVpc_KfC6P4RwsA">
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2"><span
+            class="font-headline-sm text-xs sm:text-sm font-semibold text-[#f1f7f3]">La Madriguera del Conejo
+            Lector</span><span class="font-body-sm text-[11px] text-[#b6cec0]">— © 2024. Todos los derechos
+            reservados.</span></div>
+      </div>
+      <div class="flex items-center gap-6 font-body-sm text-xs text-[#c1d6c8]"><a
+          class="hover:text-secondary transition-colors" href="#">Privacidad</a><a
+          class="hover:text-secondary transition-colors" href="#">Términos</a><a
+          class="hover:text-secondary transition-colors" href="#">Contacto</a><a
+          class="hover:text-secondary transition-colors" href="#">Biblioteca</a></div>
+    </div>
+  </footer>
+
+
+
+
+</body>
+
+</html>
